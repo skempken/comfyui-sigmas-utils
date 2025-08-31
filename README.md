@@ -2,6 +2,10 @@
 
 A collection of ComfyUI custom nodes for visualizing and understanding sigma values in diffusion processes.
 
+![Example Visualization](example.jpg)
+
+*Example: CFG Schedule Visualizer showing how CFG values change across timesteps based on sigma progression*
+
 ## Features
 
 ### 🎯 Sigma Visualizer
@@ -20,9 +24,10 @@ Visualize sigma value distributions with multiple plot types:
 
 ### 📈 CFG Schedule Visualizer
 Visualize how CFG values are interpolated across timesteps based on sigma progression:
-- Shows CFG scheduling curve based on ScheduledGuider logic
+- Shows CFG scheduling curve based on [ScheduledGuider](https://github.com/mfg637/ComfyUI-ScheduledGuider-Ext) logic
 - Optional control sigma overlay for comparison
 - Displays CFG range and sigma statistics
+- **Note**: This is a visualization tool - for actual CFG scheduling during sampling, use the [ComfyUI-ScheduledGuider-Ext](https://github.com/mfg637/ComfyUI-ScheduledGuider-Ext) nodes
 
 **Inputs:**
 - `cfg_scaling_sigmas` (SIGMAS): Sigma values used for CFG scheduling
@@ -62,15 +67,21 @@ The nodes will appear in the **"sampling/custom_sampling/sigmas"** category in C
 
 ### CFG Schedule Analysis
 1. Use CFGScheduleVisualizerNode with your sigma schedule
-2. Set desired cfg_min and cfg_max values
+2. Set desired cfg_min and cfg_max values  
 3. Optionally connect a different sigma sequence to control_sigmas for comparison
 4. The output shows how CFG values change throughout the sampling process
+5. Use this to preview and tune parameters before applying actual CFG scheduling with [ComfyUI-ScheduledGuider-Ext](https://github.com/mfg637/ComfyUI-ScheduledGuider-Ext)
 
 ## Examples
 
 - **Compare Schedulers**: Use SigmaVisualizerNode to compare different noise schedules
-- **CFG Analysis**: Use CFGScheduleVisualizerNode to understand how guidance changes across timesteps
+- **CFG Analysis**: Use CFGScheduleVisualizerNode to understand how guidance changes across timesteps  
 - **Schedule Tuning**: Visualize the impact of different sigma distributions on CFG scheduling
+- **Parameter Preview**: Test different cfg_min/cfg_max values before using them in actual sampling workflows
+
+## Related Projects
+
+- **[ComfyUI-ScheduledGuider-Ext](https://github.com/mfg637/ComfyUI-ScheduledGuider-Ext)** - Implements the actual CFG scheduling during sampling that this package visualizes
 
 ## Dependencies
 
